@@ -58,7 +58,7 @@ public class CN1AppiumIOSTest {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         String appPath = System.getProperty("app", null);
         if (appPath != null) {
-            capabilities.setCapability("app", appPath);
+            capabilities.setCapability("app", new File(appPath).getAbsolutePath());
             //capabilities.setCapability("platformName", "iOS");
             capabilities.setCapability("deviceName", System.getProperty("deviceName", "iPhone 6s"));
             capabilities.setCapability("automationName", "XCUITest");
