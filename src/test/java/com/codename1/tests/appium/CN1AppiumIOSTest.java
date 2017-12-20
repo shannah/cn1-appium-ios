@@ -60,11 +60,15 @@ public class CN1AppiumIOSTest {
         if (appPath != null) {
             capabilities.setCapability("app", new File(appPath).getAbsolutePath());
             //capabilities.setCapability("platformName", "iOS");
+            if (System.getProperty("deviceName", null) == null && System.getenv("DEVICE_NAME") != null) {
+                System.setProperty("deviceName", System.getenv("DEVICE_NAME"));
+            }
+            if (System.getProperty("platformVersion", null) == null && System.getenv("PLATFORM_VERSION") != null) {
+                System.setProperty("platformVersion", System.getenv("PLATFORM_VERSION"));
+            }
             capabilities.setCapability("deviceName", System.getProperty("deviceName", "iPhone 6s"));
             capabilities.setCapability("automationName", "XCUITest");
-            if (System.getProperty("deviceName") != null) {
-                capabilities.setCapability("deviceName", System.getProperty("deviceName", "Android Emulator"));
-            }
+            
             if (System.getProperty("platformVersion") != null) {
                 capabilities.setCapability("platformVersion", System.getProperty("platformVersion", "9.3"));
             }
