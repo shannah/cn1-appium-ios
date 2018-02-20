@@ -56,6 +56,7 @@ public class CN1AppiumIOSTest {
         
         String appiumUrl = System.getProperty("appium.url", "http://127.0.0.1:4723/wd/hub");
         DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("showIOSLog", "true");
         String appPath = System.getProperty("app", null);
         if (appPath != null) {
             capabilities.setCapability("app", new File(appPath).getAbsolutePath());
